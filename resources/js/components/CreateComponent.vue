@@ -2,11 +2,7 @@
     <div class="container-fluid">
         <div class="pb-4 mb-4">
             <h3 class="display-6 float-left">Student List</h3>
-            <button
-                class="btn btn-sm btn-success float-right"
-                data-toggle="modal"
-                data-target="#students"
-            >
+            <button class="btn btn-sm btn-success float-right" @click="clearData" data-toggle="modal" data-target="#students" >
                 New Student
             </button>
         </div>
@@ -35,17 +31,14 @@
                 </tr>
             </tbody>
         </table>
-        <pagination
-            :data="results"
-            @pagination-change-page="getResults"
-        ></pagination>
+        <pagination :data="results" @pagination-change-page="getResults" ></pagination>
         <!-- The Modal -->
         <div class="modal" id="students">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">{{ modal_title }}</h4>
-                        <button type="button" class="close" data-dismiss="modal" >
+                        <button type="button" @click="(add = true),(edit = false),clearData" class="close" data-dismiss="modal" >
                             &times;
                         </button>
                     </div>
@@ -64,7 +57,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-outline-danger" @click="add = true" data-dismiss="modal" >
+                        <button class="btn btn-outline-danger" @click="(add = true),(edit = false),clearData" data-dismiss="modal" >
                             Close
                         </button>
                         <button v-if="add" class="btn btn-outline-success" @click="saveStudent" >
@@ -93,7 +86,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close </button>
-                        <button class="btn btn-outline-success" @click="doDelete()" > Save </button>
+                        <button class="btn btn-outline-success" @click="doDelete()" > Delete </button>
                     </div>
                 </div>
             </div>
@@ -134,7 +127,6 @@ export default {
         editStudent(id) {
             this.modal_title = "Edit Student";
             axios.get("/student/edit/" + id).then(res => {
-                console.log(res);
                 this.id = res.data.id;
                 this.name = res.data.name;
                 this.email = res.data.email;

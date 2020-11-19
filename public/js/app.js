@@ -2004,13 +2004,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2047,7 +2040,6 @@ __webpack_require__.r(__webpack_exports__);
 
       this.modal_title = "Edit Student";
       axios.get("/student/edit/" + id).then(function (res) {
-        console.log(res);
         _this2.id = res.data.id;
         _this2.name = res.data.name;
         _this2.email = res.data.email;
@@ -38319,10 +38311,24 @@ var render = function() {
     "div",
     { staticClass: "container-fluid" },
     [
-      _vm._m(0),
+      _c("div", { staticClass: "pb-4 mb-4" }, [
+        _c("h3", { staticClass: "display-6 float-left" }, [
+          _vm._v("Student List")
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-sm btn-success float-right",
+            attrs: { "data-toggle": "modal", "data-target": "#students" },
+            on: { click: _vm.clearData }
+          },
+          [_vm._v("\n            New Student\n        ")]
+        )
+      ]),
       _vm._v(" "),
       _c("table", { staticClass: "table table-hover" }, [
-        _vm._m(1),
+        _vm._m(0),
         _vm._v(" "),
         _c(
           "tbody",
@@ -38399,7 +38405,12 @@ var render = function() {
                 "button",
                 {
                   staticClass: "close",
-                  attrs: { type: "button", "data-dismiss": "modal" }
+                  attrs: { type: "button", "data-dismiss": "modal" },
+                  on: {
+                    click: function($event) {
+                      ;(_vm.add = true), (_vm.edit = false), _vm.clearData
+                    }
+                  }
                 },
                 [_vm._v("\n                        ×\n                    ")]
               )
@@ -38493,7 +38504,7 @@ var render = function() {
                   attrs: { "data-dismiss": "modal" },
                   on: {
                     click: function($event) {
-                      _vm.add = true
+                      ;(_vm.add = true), (_vm.edit = false), _vm.clearData
                     }
                   }
                 },
@@ -38541,7 +38552,7 @@ var render = function() {
       _c("div", { staticClass: "modal", attrs: { id: "msg" } }, [
         _c("div", { staticClass: "modal-dialog" }, [
           _c("div", { staticClass: "modal-content" }, [
-            _vm._m(2),
+            _vm._m(1),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
               _vm._v(
@@ -38589,7 +38600,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v(" Save ")]
+                [_vm._v(" Delete ")]
               )
             ])
           ])
@@ -38600,25 +38611,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pb-4 mb-4" }, [
-      _c("h3", { staticClass: "display-6 float-left" }, [
-        _vm._v("Student List")
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-sm btn-success float-right",
-          attrs: { "data-toggle": "modal", "data-target": "#students" }
-        },
-        [_vm._v("\n            New Student\n        ")]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
