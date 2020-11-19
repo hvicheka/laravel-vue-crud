@@ -24,5 +24,4 @@ Route::post('/student/create','StudentController@saveStudent');
 Route::get('/student','StudentController@index');
 Route::get('/student/edit/{id}','StudentController@editStudent');
 Route::put('/student/update','StudentController@updateStudent');
-Route::get('/student/show-delete/{id}','StudentController@showDelete');
 Route::delete('/student/delete/{id}','StudentController@deleteStudent');

@@ -17,7 +17,6 @@ class StudentController extends Controller
         $student->name = request()->name;
         $student->email = request()->email;
         $student->phone = request()->phone;
-
         $student->save();
     }
 
@@ -31,12 +30,7 @@ class StudentController extends Controller
         $student->name = request()->name;
         $student->email = request()->email;
         $student->phone = request()->phone;
-
         $student->update();
-    }
-
-    public function showDelete($id){
-        return $id;
     }
 
     public function deleteStudent($id){
